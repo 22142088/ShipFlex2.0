@@ -9,21 +9,24 @@ class Menu{
         System.out.println("3: optie lijst");
     }
 
-    public static void checkKeuze(int keuze){
-        if(keuze == 1){
-            System.out.println("offerte maken");
-        }
-        else if (keuze == 2){
-            System.out.println("lijst met klanten");
-        }
-        else if (keuze == 3){
-            System.out.println("lijst met opties");
-        }
-        else {
-            System.out.println("geen geldige keuze");
+    public static void checkKeuze(int keuze) {
+        switch (keuze) {
+            case 1 -> {
+                System.out.println("offerte maken");
+            }
+            case 2 -> {
+                System.out.println("lijst met klanten");
+            }
+            case 3 -> {
+                System.out.println("lijst met opties");
+                Lijst.initialiseList();
+                Lijst.printLijst();
+            }
+            default -> {
+                System.out.println("geen geldige keuze");
+            }
         }
     }
-
 }
 
 public class Main {
