@@ -1,46 +1,139 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Lijst {
-    private static final ArrayList<Optie> lijst = new ArrayList<>();
+    private static final ArrayList<Optie> speedboot = new ArrayList<>();
+    private static final ArrayList<Optie> vrachtschip = new ArrayList<>();
+    private static final ArrayList<Optie> zeilboot = new ArrayList<>();
+    private static final ArrayList<Optie> dinghy = new ArrayList<>();
 
     public static void initialiseList() {
-        lijst.add(new Optie("Brandblusser", "Een apparaat om branden te blussen.", 50, "Essentieel"));
-        lijst.add(new Optie("Zwemvesten", "Drijfhulpmiddelen om te dragen bij het varen.", 100, "Essentieel"));
-        lijst.add(new Optie("Noodsignalen", "Flares, rooksignalen en andere apparatuur om in geval van nood opgemerkt te worden.", 75, "Essentieel"));
-        lijst.add(new Optie("Anker", "Een anker om het vaartuig te verankeren op een gewenste locatie.", 200, "Essentieel"));
-        lijst.add(new Optie("Touwen en lijnen", "Om het vaartuig vast te maken aan kades, boeien, ankers of andere boten.", 50, "Essentieel"));
-        lijst.add(new Optie("Kompas", "Om de richting te bepalen.", 150, "Essentieel"));
-        lijst.add(new Optie("Reddingsboei", "Een hulpmiddel om drenkelingen te redden.", 75, "Essentieel"));
-        lijst.add(new Optie("GPS-systeem", "Om de positie en route van het vaartuig te bepalen.", 500, "Essentieel"));
-        lijst.add(new Optie("Radiocommunicatieapparatuur", "Om te communiceren met andere boten en hulpdiensten.", 250, "Essentieel"));
-        lijst.add(new Optie("Satelliettelefoon", "Om te communiceren op afgelegen plaatsen waar geen mobiele telefoon ontvangst is.", 1000, "Extra"));
-        lijst.add(new Optie("Zonnepanelen", "Om stroom op te wekken aan boord.", 500, "Extra"));
-        lijst.add(new Optie("Zwemplatform", "Een verlenging van het achterdek om te zwemmen en duiken.", 500, "Extra"));
-        lijst.add(new Optie("Airconditioning", "Om de temperatuur aan boord te regelen.", 1000, "Extra"));
-        lijst.add(new Optie("Koelkast", "Om voedsel en dranken koel te houden aan boord.", 500, "Extra"));
-        lijst.add(new Optie("Oven en kookplaat", "Om te koken en te bakken aan boord.", 500, "Extra"));
-        lijst.add(new Optie("Automatische piloot", "Om het vaartuig automatisch te laten varen.", 1500, "Extra"));
-        lijst.add(new Optie("Luxe interieurafwerking", "Een hoogwaardige afwerking van het interieur voor extra comfort en uitstraling.", 3000, "Luxe"));
-        lijst.add(new Optie("Massagesysteem", "Een ingebouwd massagesysteem in de stoelen voor extra comfort tijdens lange tochten op het water.", 1500, "Luxe"));
-        lijst.add(new Optie("Barbecue", "Een luxe barbecue op het achterdek voor het bereiden van heerlijke maaltijden tijdens het varen.", 1000, "Luxe"));
-        lijst.add(new Optie("Wijnkoeler", "Een ingebouwde wijnkoeler om de wijn op de juiste temperatuur te houden tijdens het varen.", 800, "Luxe"));
-        lijst.add(new Optie("Smart Home-systeem", "Een slim thuissysteem om verlichting, temperatuur en beveiliging van de boot te regelen.", 2000, "Luxe"));
-        lijst.add(new Optie("Lederen bekleding", "Lederen bekleding voor een extra luxe uitstraling en comfort aan boord.", 1000, "Luxe"));
-        lijst.add(new Optie("Sfeerverlichting", "Een sfeervolle verlichting om een gezellige sfeer te creëren aan boord.", 500, "Luxe"));
-        lijst.add(new Optie("Entertainmentsysteem", "Een ingebouwd entertainmentsysteem met TV en geluidssysteem voor extra comfort en vermaak aan boord.", 2500, "Luxe"));
+        //motor opties
+        //speedboat
+        speedboot.add(new Optie("standaard motor","standaart 2000pk motor",1000,"motor" ));
+        speedboot.add(new Optie("sport motor","sport uitvoering 2500pk motor",1000,"motor" ));
+        speedboot.add(new Optie("electrische motor","standaart 200pk motor",1000,"motor" ));
+        speedboot.add(new Optie("zuinige motor","zuinige 1800pk motor",1000,"motor" ));
+
+        //vrachtschip
+        vrachtschip.add(new Optie("standaard motor","50000 pk motor",10000,"motor" ));
+        vrachtschip.add(new Optie("zuinige millieu vriendelijke motor","45000 pk motor",12000,"motor" ));
+
+        //zeilboot
+        zeilboot.add(new Optie("standaard motor","standaart 100pk motor",1000,"motor" ));
+        zeilboot.add(new Optie("electrische motor","80pk motor",1200,"motor" ));
+
+        //dinghy
+        dinghy.add(new Optie("standaard motor","standaart 15pk motor",1000,"motor" ));
+        dinghy.add(new Optie("sportieve motor","sportuitvoering 30pk motor",1000,"motor" ));
+        dinghy.add(new Optie("zuinige motor","milieu vriendelijke 15pk motor",1000,"motor" ));
+
+        //verf opties
+        //speedboat
+        speedboot.add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
+        speedboot.add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));
+
+        //vrachtschip
+        vrachtschip.add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
+        vrachtschip.add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));        //zeilboot
+
+        //zeilboot
+        zeilboot.add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
+        zeilboot.add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));        //zeilboot
+
+        //dinghy
+        dinghy.add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
+        dinghy.add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));
+
+        //schipmateriaal opties
+        //speedboat
+        speedboot.add(new Optie("gerecycled hout","gerecycled hout wat gehaald is van andere schepen",300,"materiaal" ));
+        speedboot.add(new Optie("hout","hout van de hout markt type ligt aan de soort die beschikbaar is",300,"materiaal" ));
+        speedboot.add(new Optie("aluminium","aluminium ",300,"materiaal" ));
+        speedboot.add(new Optie("glasvezel","glasvezel",300,"materiaal" ));
+        speedboot.add(new Optie("carbon fiber","voor de luxe afwerking van het schip",300,"materiaal" ));
+
+        //vrachtschip
+        vrachtschip.add(new Optie("gerecycled aluminium","standaard verf die word aangebracht op de hul van uw boot",200,"materiaal" ));
+        vrachtschip.add(new Optie("aluminium","aluminium",300,"materiaal" ));
+        vrachtschip.add(new Optie("glasvezel","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"materiaal" ));
+
+        //zeilboot
+        zeilboot.add(new Optie("gerecycled hout","hout dat is gered van andere schepen",200,"materiaal" ));
+        zeilboot.add(new Optie("hout","hout van de hout markt type ligt aan de soort die beschikbaar is",300,"materiaal" ));
+        zeilboot.add(new Optie("aluminium","aluminium",300,"materiaal" ));
+        zeilboot.add(new Optie("glasvezel","glasvezel",300,"materiaal" ));
+
+
+        //dinghy
+        dinghy.add(new Optie("gerecycled hout","hout dat is gered van andere schepen",200,"materiaal" ));
+        dinghy.add(new Optie("hout","hout van de hout markt type ligt aan de soort die beschikbaar is",300,"materiaal" ));
+        dinghy.add(new Optie("rubber","beschikbaar rubber",300,"materiaal" ));
+
+
+        //cockpit
+        //speedboat
+        speedboot.add(new Optie("basic","voor de basic cockpit van het schip daaronder valt...",300,"cockpit" ));
+        speedboot.add(new Optie("luxe","voor de luxe cockpit van het schip daaronder valt...",300,"cockpit" ));
+        speedboot.add(new Optie("advanced","voor de advanced afwerking van het schip hieronder valt...",300,"cockpit" ));
+
+        //vrachtschip
+        vrachtschip.add(new Optie("basic","voor de basic cockpit van het schip daaronder valt...",300,"cockpit" ));
+        vrachtschip.add(new Optie("luxe","voor de luxe cockpit van het schip daaronder valt...",300,"cockpit" ));
+        vrachtschip.add(new Optie("advanced","voor de advanced afwerking van het schip hieronder valt...",300,"cockpit" ));
+
+        //zeilboot
+        zeilboot.add(new Optie("basic","voor de basic cockpit van het schip daaronder valt...",300,"cockpit" ));
+        zeilboot.add(new Optie("luxe","voor de luxe cockpit van het schip daaronder valt...",300,"cockpit" ));
+        zeilboot.add(new Optie("advanced","voor de advanced afwerking van het schip hieronder valt...",300,"cockpit" ));
+
+        //dinghy
+        dinghy.add(new Optie("basic","voor de basic cockpit van het schip daaronder valt...",300,"cockpit" ));
+        dinghy.add(new Optie("luxe","voor de luxe cockpit van het schip daaronder valt...",300,"cockpit" ));
+        dinghy.add(new Optie("advanced","voor de advanced afwerking van het schip hieronder valt...",300,"cockpit" ));
+
+        //zeil voor zeilboot
+        zeilboot.add(new Optie("standaard","standaard zeil",300,"zeil" ));
+        zeilboot.add(new Optie("gerecycled","millieu vriendelijke optie",300,"zeil" ));
+        zeilboot.add(new Optie("met print","een zeil met custom print erop die u levert",300,"zeil" ));
+
+
+
+
+    }
+    public ArrayList<Optie> getLijstSpeedboot() {
+        return speedboot;
+    }
+    public ArrayList<Optie> getLijstVrachtschip() {
+        return vrachtschip;
+    }
+    public ArrayList<Optie> getLijstZeilboot() {
+        return zeilboot;
+    }
+    public ArrayList<Optie> getLijstDinghy() {
+        return dinghy;
     }
 
-    public ArrayList<Optie> getLijst() {
-        return lijst;
-    }
-
-    public static void printLijst() {
-        // sorts list in alphabetical order of category
-        lijst.sort((optie1, optie2) -> optie1.getCategory().compareTo(optie2.getCategory()));
-
+    public static void printLijst(ArrayList<Optie> lijst) {
         // prints every optie in lijst and their information
         for (Optie optie : lijst) {
-            System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+            switch (optie.getCategory()) {
+                case "motor":
+                    System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                    break;
+                case "verf":
+                    System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                    break;
+                case "materiaal":
+                    System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                    break;
+                case "cockpit":
+                    System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                    break;
+                case "zeil":
+                    System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                    break;
+            }
         }
     }
 }
