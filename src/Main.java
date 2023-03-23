@@ -67,12 +67,16 @@ class Menu{
 public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
-        menu.createMenuItems();
-        Scanner scanner = new Scanner(System.in);
-        menu.printMenu();
-        System.out.println("Kies een optie in het menu");
-        int input1 = scanner.nextInt();
-        System.out.println("u heeft gekozen voor optie " + input1);
+        //menu.createMenuItems();
+        //Scanner scanner = new Scanner(System.in);
+        //menu.printMenu();
+//        System.out.println("Kies een optie in het menu");
+//        int input1 = scanner.nextInt();
+//        System.out.println("u heeft gekozen voor optie " + input1);
+        Lijst lijst = new Lijst();
+        lijst.addLists();
+        lijst.initialiseList();
+        lijst.printLijst(lijst.getLijst());
 
     }
 }
