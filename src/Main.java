@@ -2,24 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-class Menu{
-    private ArrayList<MenuItem> menuItems = new ArrayList<>();
-
-    public void createMenuItems(){
-        menuItems.add(new LijstMenuItem("optie lijst"));
-    }
-
-        //counter aanmaken
-    public void printMenu(){
-        for (MenuItem item : menuItems){
-            System.out.println(item.getName());
-        }
-    }
-
-    public void checkKeuze(int input){
-
-
-    }
 
 
 
@@ -61,22 +43,19 @@ class Menu{
 //            }
 //        }
 //    }
-}
-//joren kinda sus
+//
 
 public class Main {
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        Scanner sc = new Scanner(System.in);
+        HoofdMenu hmenu = new HoofdMenu();
+        hmenu.createMenu();
+        hmenu.execute(hmenu.printMenu());
         //menu.createMenuItems();
         //Scanner scanner = new Scanner(System.in);
         //menu.printMenu();
 //        System.out.println("Kies een optie in het menu");
-//        int input1 = scanner.nextInt();
+       int input1 = sc.nextInt();
 //        System.out.println("u heeft gekozen voor optie " + input1);
-        Lijst lijst = new Lijst();
-        lijst.addLists();
-        lijst.initialiseList();
-        lijst.printLijst(lijst.getLijst());
-
     }
 }

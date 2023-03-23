@@ -40,11 +40,11 @@ public class Lijst {
 
         //vrachtschip
         lists.get(1).add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
-        lists.get(1).add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));        //zeilboot
+        lists.get(1).add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));
 
         //zeilboot
         lists.get(2).add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
-        lists.get(2).add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));        //zeilboot
+        lists.get(2).add(new Optie("millieu vriendelijke verf","millieu vriendelijke verf die geen gifstoffen afgeeft",300,"verf" ));
 
         //dinghy
         lists.get(3).add(new Optie("standaard verf","standaard verf die word aangebracht op de hul van uw boot",200,"verf" ));
@@ -111,27 +111,11 @@ public class Lijst {
     }
 
 
-    public static void printLijst(ArrayList<ArrayList<Optie>> arrayLijst) {
+    public void printLijst(ArrayList<ArrayList<Optie>> arrayLijst) {
         // prints every optie in lijst and their information
         for (ArrayList<Optie> optieLijst : arrayLijst) {
             for (Optie optie : optieLijst) {
-                switch (optie.getCategory()) {
-                    case "motor":
-                        System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        break;
-                    case "verf":
-                        System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        break;
-                    case "materiaal":
-                        System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        break;
-                    case "cockpit":
-                        System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        break;
-                    case "zeil":
-                        System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        break;
-                }
+                System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
             }
         }
     }
