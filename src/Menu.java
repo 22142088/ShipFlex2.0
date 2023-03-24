@@ -37,6 +37,6 @@ class BootMenu extends Menu {
         Lijst lijst = new Lijst();
         lijst.addLists();
         lijst.initialiseList();
-        lijst.printLijst(lijst.getLijst());
+        lijst.printLijst(lijst.getLijst(),input);
     }
 }

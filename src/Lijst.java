@@ -111,12 +111,11 @@ public class Lijst {
     }
 
 
-    public void printLijst(ArrayList<ArrayList<Optie>> arrayLijst) {
+    public void printLijst(ArrayList<ArrayList<Optie>> arrayLijst,int index) {
         // prints every optie in lijst and their information
-        for (ArrayList<Optie> optieLijst : arrayLijst) {
-            for (Optie optie : optieLijst) {
-                System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-            }
+
+        for (Optie optie : arrayLijst.get(index-1)){
+            System.out.printf("%s : %s - €%d - %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
         }
     }
 }
