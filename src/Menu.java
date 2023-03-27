@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Menu {
-    protected String menuNaam;
     protected ArrayList<MenuItem> menu = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     public int printMenu() {
@@ -32,11 +31,11 @@ class BootMenu extends Menu {
         menu.add(new ZeilbootItem("Zeilboot"));
         menu.add(new VrachtSchipItem("Vrachtschip"));
         menu.add(new DinghyItem("Dinghy"));
+        menu.add(new TerugItem("Terug"));
     }
     public void execute(int input) {
-        Lijst lijst = new Lijst();
-        lijst.addLists();
-        lijst.initialiseList();
-        lijst.printLijst(lijst.getLijst(),input);
+        Lijst.addLists();
+        Lijst.initialiseList();
+        menu.get(input-1).execute();
     }
 }
