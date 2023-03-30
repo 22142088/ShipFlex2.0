@@ -47,7 +47,7 @@ class SpeedbootItem extends MenuItem {
      }
      @Override
      public void execute() {
-          Lijst.printLijst(Lijst.getLijst(),0);
+          OptieLijst.printLijst(OptieLijst.getLijst(),0);
      }
 }
  class VrachtSchipItem extends MenuItem {
@@ -56,7 +56,7 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           Lijst.printLijst(Lijst.getLijst(),1);
+           OptieLijst.printLijst(OptieLijst.getLijst(),1);
       }
  }
  class ZeilbootItem extends MenuItem {
@@ -65,7 +65,7 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           Lijst.printLijst(Lijst.getLijst(),2);
+           OptieLijst.printLijst(OptieLijst.getLijst(),2);
       }
  }
  class DinghyItem extends MenuItem {
@@ -74,6 +74,6 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           Lijst.printLijst(Lijst.getLijst(),3);
+           OptieLijst.printLijst(OptieLijst.getLijst(),3);
       }
  }

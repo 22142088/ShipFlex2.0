@@ -42,8 +42,8 @@ class BootMenu extends Menu {
     }
 
     public void executeMenu(int input) {
-        Lijst.addLists();
-        Lijst.initialiseList();
+        OptieLijst.addLists();
+        OptieLijst.initialiseList();
         menu.get(input-1).execute();
     }
 }
