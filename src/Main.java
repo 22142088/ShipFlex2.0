@@ -4,6 +4,6 @@ public class Main {
     public static void main(String[] args) {
         HoofdMenu hmenu = new HoofdMenu();
         hmenu.createMenu();
-        hmenu.execute(hmenu.printMenu());
+        hmenu.executeMenu(hmenu.printMenu());
     }
 }

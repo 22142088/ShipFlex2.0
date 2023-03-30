@@ -3,7 +3,7 @@
      public MenuItem(String name) {
           this.name = name;
      }
-     String getName() {
+     public String getName() {
           return name;
      }
      public void execute(){};
@@ -16,7 +16,7 @@ class OptieLijstItem extends MenuItem{
      public void execute() {
           BootMenu bmenu = new BootMenu();
           bmenu.createMenu();
-          bmenu.execute(bmenu.printMenu());
+          bmenu.executeMenu(bmenu.printMenu());
      }
 }
 class OfferteMakenItem extends MenuItem {
@@ -39,6 +39,8 @@ class TerugItem extends MenuItem {
           // FIX THIS
      }
 }
+
+//sub menu
 class SpeedbootItem extends MenuItem {
      public SpeedbootItem(String name) {
           super(name);
