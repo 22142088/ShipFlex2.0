@@ -1,8 +1,8 @@
 class Klanten {
 
-    String naam;
-    String kortingNaam;
-    int kortingPercentage;
+    protected String naam;
+    protected String kortingNaam;
+    protected int kortingPercentage;
 
     public Klanten(String naam, String kortingNaam, int kortingPercentage){
         this.naam = naam;
