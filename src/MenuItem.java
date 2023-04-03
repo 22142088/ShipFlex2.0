@@ -23,10 +23,21 @@ class OfferteMakenItem extends MenuItem {
      public OfferteMakenItem(String name) {
           super(name);
      }
+
+     @Override
+     public void execute() {
+          double motorPrijs = Offerte.motorVragenLijst();
+
+
+     }
 }
 class KlantenManagnementItem extends MenuItem {
      public KlantenManagnementItem(String name) {
           super(name);
+     }
+
+     @Override
+     public void execute() {
      }
 }
 
@@ -40,43 +51,6 @@ class TerugItem extends MenuItem {
      }
 }
 
-//sub menu
-class SpeedbootItem extends MenuItem {
-     public SpeedbootItem(String name) {
-          super(name);
-     }
-     @Override
-     public void execute() {
-          OptieLijst.printLijst("Speedboot");
-     }
-}
- class VrachtSchipItem extends MenuItem {
-      public VrachtSchipItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst("Vrachtschip");
-      }
- }
- class ZeilbootItem extends MenuItem {
-      public ZeilbootItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst("Zeilboot");
-      }
- }
- class DinghyItem extends MenuItem {
-      public DinghyItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst("Dinghy");
-      }
- }
  class PrijsIndicatieItem extends MenuItem {
       public PrijsIndicatieItem(String name) {
            super(name);

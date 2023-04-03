@@ -22,8 +22,8 @@ class HoofdMenu extends Menu {
     public void createMenu() {
         menu.add(new OfferteMakenItem("Offerte Maken"));
         menu.add(new KlantenManagnementItem("Klanten Managnement"));
-        menu.add(new BootMenuItem("Opties Inzien"));
-
+        menu.add(new OptieOptiesItem("Opties Inzien"));
+        printMenu();
     }
 
     public void executeMenu(int input) {
@@ -48,56 +48,18 @@ class BootMenu extends Menu {
 }
 class OptieKeuzeMenu extends Menu {
     public void createMenu() {
+        menu.add(new BootOptieLijstItem("Opties Inzien"));
         menu.add(new PrijsIndicatieItem("Prijs indicatie"));
-        menu.add(new BootMenuItem("Terug"));
+        menu.add(new HoofdMenuItem("Terug"));
+        printMenu();
     }
     public void executeMenu(int input) {
         menu.get(input-1).execute();
     }
 }
-
-
-
-
-
-//import java.util.ArrayList;
-//import java.util.Scanner;
-//
-//public class Menu {
-//    protected ArrayList<MenuItem> menu = new ArrayList<>();
-//    private Scanner sc = new Scanner(System.in);
-//    public int printMenu() {
-//        int index = 1;
-//        System.out.println("Kies uw optie:");
-//        for (MenuItem item : menu) {
-//            System.out.println(index + ": " + item.getName());
-//            index++;
-//        }
-//        return sc.nextInt();
-//    }
-//}
-//class HoofdMenu extends Menu {
-//    public void createMenu() {
-//        menu.add(new OfferteMakenItem("Offerte Maken"));
-//        menu.add(new KlantenManagnementItem("Klanten Managnement"));
-//        menu.add(new OptieLijstItem("Opties Inzien"));
-//    }
-//
-//    public void execute(int input) {
-//        menu.get(input-1).execute();
-//    }
-//}
-//class BootMenu extends Menu {
-//    public void createMenu() {
-//        menu.add(new SpeedbootItem("Speedboot"));
-//        menu.add(new ZeilbootItem("Zeilboot"));
-//        menu.add(new VrachtSchipItem("Vrachtschip"));
-//        menu.add(new DinghyItem("Dinghy"));
-//        menu.add(new TerugItem("Terug"));
-//    }
-//    public void execute(int input) {
-//        Lijst.addLists();
-//        Lijst.initialiseList();
-//        menu.get(input-1).execute();
-//    }
-//}
+class TerugMenu extends Menu {
+    public void createMenu() {
+        menu.add(new HoofdMenuItem("Terug"));
+        printMenu();
+    }
+}
