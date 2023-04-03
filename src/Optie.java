@@ -5,7 +5,10 @@ public class Optie {
 
     private String typeBoot;
     private String category;
-    Optie(String name, String description, int price,String typeBoot ,String category) {
+
+
+
+    Optie(String name, String description, int price, String typeBoot , String category) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -24,5 +27,6 @@ public class Optie {
     public String getCategory() {
         return category;
     }
+    public String getTypeBoot() { return typeBoot; }
 }
 

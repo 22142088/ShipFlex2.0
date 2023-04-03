@@ -8,8 +8,8 @@
      }
      public void execute(){};
 }
-class OptieLijstItem extends MenuItem{
-     public OptieLijstItem(String name) {
+class BootMenuItem extends MenuItem{
+     public BootMenuItem(String name) {
           super(name);
      }
      @Override
@@ -36,7 +36,7 @@ class TerugItem extends MenuItem {
      }
      @Override
      public void execute() {
-          // FIX THIS
+          //TODO FIX THIS
      }
 }
 
@@ -47,7 +47,7 @@ class SpeedbootItem extends MenuItem {
      }
      @Override
      public void execute() {
-          OptieLijst.printLijst(OptieLijst.getLijst(),0);
+          OptieLijst.printLijst("Speedboot");
      }
 }
  class VrachtSchipItem extends MenuItem {
@@ -56,7 +56,7 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),1);
+           OptieLijst.printLijst("Vrachtschip");
       }
  }
  class ZeilbootItem extends MenuItem {
@@ -65,7 +65,7 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),2);
+           OptieLijst.printLijst("Zeilboot");
       }
  }
  class DinghyItem extends MenuItem {
@@ -74,6 +74,14 @@ class SpeedbootItem extends MenuItem {
       }
       @Override
       public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),3);
+           OptieLijst.printLijst("Dinghy");
+      }
+ }
+ class PrijsIndicatieItem extends MenuItem {
+      public PrijsIndicatieItem(String name) {
+           super(name);
+      }
+      public void execute() {
+
       }
  }

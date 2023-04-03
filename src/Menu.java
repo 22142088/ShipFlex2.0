@@ -22,7 +22,7 @@ class HoofdMenu extends Menu {
     public void createMenu() {
         menu.add(new OfferteMakenItem("Offerte Maken"));
         menu.add(new KlantenManagnementItem("Klanten Managnement"));
-        menu.add(new OptieLijstItem("Opties Inzien"));
+        menu.add(new BootMenuItem("Opties Inzien"));
 
     }
 
@@ -42,8 +42,16 @@ class BootMenu extends Menu {
     }
 
     public void executeMenu(int input) {
-        OptieLijst.addLists();
-        OptieLijst.initialiseList();
+        OptieLijst.initialiseOptieLijst();
+        menu.get(input-1).execute();
+    }
+}
+class OptieKeuzeMenu extends Menu {
+    public void createMenu() {
+        menu.add(new PrijsIndicatieItem("Prijs indicatie"));
+        menu.add(new BootMenuItem("Terug"));
+    }
+    public void executeMenu(int input) {
         menu.get(input-1).execute();
     }
 }
