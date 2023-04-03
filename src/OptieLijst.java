@@ -125,7 +125,66 @@ public class OptieLijst {
                 }
             }
         }
+    }
 
+    public static int prijsIndicatie(String bootType) {
+        int prijs = 0;
+        int index = 1;
+        ArrayList<Optie> tempLijst = new ArrayList<>();
+        ArrayList<String> categorieLijst = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        for (Optie optie : optieLijst) {
+            if (bootType.equalsIgnoreCase(optie.getBootType())) {
+                tempLijst.add(optie);
+                if (!categorieLijst.contains(optie.getCategory())) {
+                    categorieLijst.add(optie.getCategory());
+                }
+            }
+        }
+        for (String categorie : categorieLijst) {
+            int index2 = index;
+            System.out.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
+            for (Optie optie : optieLijst) {
+                if (categorie.equalsIgnoreCase(optie.getCategory())) {
+                    if (bootType.equalsIgnoreCase(optie.getBootType())) {
+                        System.out.printf("%-3d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                        index++;
+                    }
+                }
+            }
+            prijs += tempLijst.get(getIntInputBetweenTwoNums(index2, index)).getPrice();
+        }
+        return prijs;
+    }
+
+    public static int getIntInputBetweenTwoNums(int start, int end) {
+        boolean validInput = false;
+        int input = -1;
+        Scanner sc = new Scanner(System.in);
+        while (!validInput) {
+            input = sc.nextInt();
+            if (input >= start && input <= end) {
+                validInput = true;
+            }
+            else {
+                System.out.println("Vekeerde input, probeer het opnieuw!");
+            }
+        }
+        return input;
+    }
+    public static String getBootInput() {
+        int index = 1;
+        ArrayList<String> bootTypeLijst = new ArrayList<>();
+        for (Optie optie : optieLijst) {
+            if (!bootTypeLijst.contains(optie.getBootType())) {
+                bootTypeLijst.add(optie.getBootType());
+
+            }
+        }
+        for (String bootType : bootTypeLijst) {
+            System.out.printf("%-3d: %s\n", index, bootType);
+            index++;
+        }
+        return bootTypeLijst.get(getIntInputBetweenTwoNums(1, index)-1);
     }
 }
-

@@ -1,4 +1,7 @@
- abstract class MenuItem {
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+abstract class MenuItem {
      String name;
      public MenuItem(String name) {
           this.name = name;
@@ -8,15 +11,15 @@
      }
      public void execute(){};
 }
-class BootMenuItem extends MenuItem{
-     public BootMenuItem(String name) {
+class BootOptieLijstItem extends MenuItem {
+     public BootOptieLijstItem(String name) {
           super(name);
      }
+
      @Override
      public void execute() {
-          BootMenu bmenu = new BootMenu();
-          bmenu.createMenu();
-          bmenu.executeMenu(bmenu.printMenu());
+          OptieLijst.printLijst(OptieLijst.getBootInput());
+          new TerugMenu().createMenu();
      }
 }
 class OfferteMakenItem extends MenuItem {
@@ -41,13 +44,13 @@ class KlantenManagnementItem extends MenuItem {
      }
 }
 
-class TerugItem extends MenuItem {
-     public TerugItem(String name) {
+class HoofdMenuItem extends MenuItem {
+     public HoofdMenuItem(String name) {
           super(name);
      }
      @Override
      public void execute() {
-          //TODO FIX THIS
+          new HoofdMenu().createMenu();
      }
 }
 
@@ -56,6 +59,13 @@ class TerugItem extends MenuItem {
            super(name);
       }
       public void execute() {
-
+           System.out.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
+          new TerugMenu().createMenu();
       }
  }
+ class OptieOptiesItem extends MenuItem {
+     public OptieOptiesItem(String name) { super(name); }
+     public void execute() {
+          new OptieKeuzeMenu().createMenu();
+     }
+}
