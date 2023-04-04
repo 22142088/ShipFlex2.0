@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Menu {
     protected ArrayList<MenuItem> menu = new ArrayList<>();
-    protected Scanner scanner = new Scanner(System.in);
+    protected Reader reader = new Reader();
 
     //hier worden de menu's geprint via de menu arraylist
     protected void printMenu() {
@@ -13,7 +13,7 @@ public class Menu {
             printer.println(index + ": " + item.getName());
             index++;
         }
-        menu.get(scanner.nextInt()-1).execute();
+        menu.get((reader.getNumBetweenTwoNums(1, menu.size()))-1).execute();
     }
 }
 class HoofdMenu extends Menu {

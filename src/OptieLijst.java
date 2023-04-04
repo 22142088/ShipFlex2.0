@@ -135,6 +135,7 @@ public class OptieLijst {
         ArrayList<Optie> tempLijst = new ArrayList<>();
         ArrayList<String> categorieLijst = new ArrayList<>();
         ConsolePrinter printer = new ConsolePrinter();
+        Reader reader = new Reader();
         for (Optie optie : optieLijst) {
             if (bootType.equalsIgnoreCase(optie.getBootType())) {
                 tempLijst.add(optie);
@@ -154,30 +155,14 @@ public class OptieLijst {
                     }
                 }
             }
-            prijs += tempLijst.get(getIntInputBetweenTwoNums(index2, index-1)-1).getPrice();
+            prijs += tempLijst.get(reader.getNumBetweenTwoNums(index2, index-1)-1).getPrice();
 
         }
         return prijs;
     }
-
-    public static int getIntInputBetweenTwoNums(int start, int end) {
-        boolean validInput = false;
-        int input = -1;
-        ConsolePrinter printer = new ConsolePrinter();
-        Scanner sc = new Scanner(System.in);
-        while (!validInput) {
-            input = sc.nextInt();
-            if (input >= start && input <= end) {
-                validInput = true;
-            }
-            else {
-                printer.println("Vekeerde input, probeer het opnieuw!");
-            }
-        }
-        return input;
-    }
     public static String getBootInput() {
         int index = 0;
+        Reader reader = new Reader();
         ConsolePrinter printer = new ConsolePrinter();
         ArrayList<String> bootTypeLijst = new ArrayList<>();
         for (Optie optie : optieLijst) {
@@ -190,6 +175,6 @@ public class OptieLijst {
             index++;
             printer.printf("%-3d: %s\n", index, bootType);
         }
-        return bootTypeLijst.get(getIntInputBetweenTwoNums(1, index)-1);
+        return bootTypeLijst.get(reader.getNumBetweenTwoNums(1, index)-1);
     }
 }
