@@ -26,7 +26,7 @@ class HoofdMenu extends Menu {
 
 class OptieKeuzeMenu extends Menu {
     public void createMenu() {
-        menu.add(new BootOptieLijstItem("Opties Inzien"));
+        menu.add(new BootOptieLijstItem("Alle Opties Inzien"));
         menu.add(new PrijsIndicatieItem("Prijs indicatie"));
         menu.add(new HoofdMenuItem("Terug"));
         printMenu();
