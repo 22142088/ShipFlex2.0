@@ -59,8 +59,9 @@ class HoofdMenuItem extends MenuItem {
            super(name);
       }
       public void execute() {
-           System.out.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
-          new TerugMenu().createMenu();
+           ConsolePrinter printer = new ConsolePrinter();
+           printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
+           new TerugMenu().createMenu();
       }
  }
  class OptieOptiesItem extends MenuItem {

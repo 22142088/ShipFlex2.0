@@ -7,9 +7,10 @@ public class Menu {
     //hier worden de menu's geprint via de menu arraylist
     protected void printMenu() {
         int index = 1;
-        System.out.println("Kies uw optie:");
+        ConsolePrinter printer = new ConsolePrinter();
+        printer.println("Kies uw optie:");
         for (MenuItem item : menu) {
-            System.out.println(index + ": " + item.getName());
+            printer.println(index + ": " + item.getName());
             index++;
         }
         menu.get(scanner.nextInt()-1).execute();
