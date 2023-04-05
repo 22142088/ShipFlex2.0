@@ -38,7 +38,7 @@ class KlantenManagnementItem extends MenuItem {
 
      @Override
      public void execute() {
-          new KlantBeheer().Menu();
+          new KlantBeheerMenu().createMenu();
      }
 }
 
@@ -66,5 +66,51 @@ class HoofdMenuItem extends MenuItem {
      public OptieOptiesItem(String name) { super(name); }
      public void execute() {
           new OptieKeuzeMenu().createMenu();
+     }
+}
+
+class KlantToevoegenItem extends MenuItem{
+
+     public KlantToevoegenItem(String name) {
+          super(name);
+     }
+     public void execute(){
+          KlantBeheer klantBeheer = new KlantBeheer();
+          klantBeheer.addKlant();
+          klantBeheer.writeDataToFile();
+     }
+}
+
+class KlantAanpassenItem extends MenuItem{
+
+     public KlantAanpassenItem(String name) {
+          super(name);
+     }
+     public void execute(){
+          KlantBeheer klantBeheer = new KlantBeheer();
+          klantBeheer.editKlant();
+     }
+}
+
+class PrintKlantenItem extends MenuItem{
+
+     public PrintKlantenItem(String name) {
+          super(name);
+     }
+
+     public void execute(){
+          KlantBeheer klantBeheer = new KlantBeheer();
+          klantBeheer.printData();
+          new KlantBeheerMenu().createMenu();
+     }
+}
+
+class KlantVerwijderenItem extends MenuItem{
+
+     public KlantVerwijderenItem(String name) {
+          super(name);
+     }
+     public void execute(){
+          //
      }
 }

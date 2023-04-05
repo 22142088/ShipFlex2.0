@@ -14,36 +14,36 @@ public class KlantBeheer {
     }
     private static final Gson gson = new Gson();
 
-    public void Menu() {
-        int choice;
-        do {
-            printer.println("Kies een optie:");
-            printer.println("1: Regristreer een nieuwe klant");
-            printer.println("2: Weergeef alle klanten");
-            printer.println("3: Klant aanpassen");
-            printer.println("0: Terug");
-
-            choice = reader.getNumBetweenTwoNums(0,3);
-
-            switch (choice) {
-                case 1:
-                    addKlant();
-                    writeDataToFile();
-                    break;
-                case 2:
-                    printData();
-                    break;
-                case 3:
-                    editKlant();
-                    break;
-                case 0:
-                    new HoofdMenu().createMenu();
-                default:
-                    printer.println("Onjuiste keuze");
-                    break;
-            }
-        } while (choice != 0);
-    }
+//    public void Menu() {
+//        int choice;
+//        do {
+//            printer.println("Kies een optie:");
+//            printer.println("1: Regristreer een nieuwe klant");
+//            printer.println("2: Weergeef alle klanten");
+//            printer.println("3: Klant aanpassen");
+//            printer.println("0: Terug");
+//
+//            choice = reader.getNumBetweenTwoNums(0,3);
+//
+//            switch (choice) {
+//                case 1:
+//                    addKlant();
+//                    writeDataToFile();
+//                    break;
+//                case 2:
+//                    printData();
+//                    break;
+//                case 3:
+//                    editKlant();
+//                    break;
+//                case 0:
+//                    new HoofdMenu().createMenu();
+//                default:
+//                    printer.println("Onjuiste keuze");
+//                    break;
+//            }
+//        } while (choice != 0);
+//    }
 
     public void writeDataToFile() {
         try (FileWriter writer = new FileWriter(filePath)) {
@@ -88,7 +88,7 @@ public class KlantBeheer {
         }
     }
 
-    private void addKlant() {
+    public void addKlant() {
         int kortingspercentage = 0;
         String naam = "";
         while (true) {
@@ -100,9 +100,9 @@ public class KlantBeheer {
         }
     }
 
-    private void printData() {
+    public void printData() {
         for (Klant klant : klanten) {
-            printer.printf("Naam: %s, Kortingspercentage: %d", klant.getNaam(), klant.getKortingspercentage());
+            printer.printf("Naam: %s, Kortingspercentage: %d \n", klant.getNaam(), klant.getKortingspercentage());
         }
     }
 }

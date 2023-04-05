@@ -23,6 +23,7 @@ public class Reader {
         }
         return input;
     }
+
     public String getStringInput() {
         boolean validInput = false;
         String input = "";

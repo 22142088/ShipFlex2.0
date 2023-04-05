@@ -18,7 +18,7 @@ public class Menu {
 class HoofdMenu extends Menu {
     public void createMenu() {
         menu.add(new OfferteMakenItem("Offerte Maken"));
-        menu.add(new KlantenManagnementItem("Klanten Managnement"));
+        menu.add(new KlantenManagnementItem("Klanten Management"));
         menu.add(new OptieOptiesItem("Opties Inzien"));
         printMenu();
     }
@@ -32,6 +32,17 @@ class OptieKeuzeMenu extends Menu {
         printMenu();
     }
 }
+class KlantBeheerMenu extends Menu{
+    public void createMenu(){
+        menu.add(new PrintKlantenItem("Klanten inzien"));
+        menu.add(new KlantToevoegenItem("Nieuwe klant toevoegen"));
+        menu.add(new KlantAanpassenItem("Pas een klant aan"));
+        menu.add(new KlantVerwijderenItem("Klant verwijderen"));
+        menu.add(new HoofdMenuItem("Terug"));
+        printMenu();
+    }
+}
+
 class TerugMenu extends Menu {
     public void createMenu() {
         menu.add(new HoofdMenuItem("Terug"));
