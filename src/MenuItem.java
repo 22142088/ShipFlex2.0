@@ -1,6 +1,3 @@
-import java.sql.SQLOutput;
-import java.util.Scanner;
-
 abstract class MenuItem {
      String name;
      public MenuItem(String name) {
@@ -41,6 +38,7 @@ class KlantenManagnementItem extends MenuItem {
 
      @Override
      public void execute() {
+          new KlantBeheer().Menu();
      }
 }
 

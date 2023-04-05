@@ -4,7 +4,6 @@ public class Menu {
     protected ArrayList<MenuItem> menu = new ArrayList<>();
     protected Reader reader = new Reader();
 
-    //hier worden de menu's geprint via de menu arraylist
     protected void printMenu() {
         int index = 1;
         ConsolePrinter printer = new ConsolePrinter();
