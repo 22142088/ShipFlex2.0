@@ -1,4 +1,4 @@
- abstract class MenuItem {
+abstract class MenuItem {
      String name;
      public MenuItem(String name) {
           this.name = name;
@@ -8,72 +8,105 @@
      }
      public void execute(){};
 }
-class OptieLijstItem extends MenuItem{
-     public OptieLijstItem(String name) {
+class BootOptieLijstItem extends MenuItem {
+     public BootOptieLijstItem(String name) {
           super(name);
      }
      @Override
      public void execute() {
-          BootMenu bmenu = new BootMenu();
-          bmenu.createMenu();
-          bmenu.executeMenu(bmenu.printMenu());
+          OptieLijst.printLijst(OptieLijst.getBootInput());
+          new TerugMenu().createMenu();
      }
 }
 class OfferteMakenItem extends MenuItem {
      public OfferteMakenItem(String name) {
           super(name);
      }
+     @Override
+     public void execute() {
+          ConsolePrinter consolePrinter = new ConsolePrinter();
+          Offerte offerte = new Offerte();
+          consolePrinter.printf("%d", offerte.test());
+     }
 }
 class KlantenManagnementItem extends MenuItem {
      public KlantenManagnementItem(String name) {
           super(name);
      }
+     @Override
+     public void execute() {
+          new KlantBeheerMenu().createMenu();
+     }
 }
 
-class TerugItem extends MenuItem {
-     public TerugItem(String name) {
+class HoofdMenuItem extends MenuItem {
+     public HoofdMenuItem(String name) {
           super(name);
      }
      @Override
      public void execute() {
-          // FIX THIS
+          new HoofdMenu().createMenu();
      }
 }
 
-//sub menu
-class SpeedbootItem extends MenuItem {
-     public SpeedbootItem(String name) {
+ class PrijsIndicatieItem extends MenuItem {
+      public PrijsIndicatieItem(String name) {
+           super(name);
+      }
+      @Override
+      public void execute() {
+           ConsolePrinter printer = new ConsolePrinter();
+           printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
+           new TerugMenu().createMenu();
+      }
+ }
+ class OptieOptiesItem extends MenuItem {
+     public OptieOptiesItem(String name) {
           super(name);
      }
      @Override
      public void execute() {
-          OptieLijst.printLijst(OptieLijst.getLijst(),0);
+          new OptieKeuzeMenu().createMenu();
      }
 }
- class VrachtSchipItem extends MenuItem {
-      public VrachtSchipItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),1);
-      }
- }
- class ZeilbootItem extends MenuItem {
-      public ZeilbootItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),2);
-      }
- }
- class DinghyItem extends MenuItem {
-      public DinghyItem(String name) {
-           super(name);
-      }
-      @Override
-      public void execute() {
-           OptieLijst.printLijst(OptieLijst.getLijst(),3);
-      }
- }
+
+class KlantToevoegenItem extends MenuItem {
+     public KlantToevoegenItem(String name) {
+          super(name);
+     }
+     @Override
+     public void execute() {
+          new KlantBeheer().addKlant();
+     }
+}
+
+class KlantAanpassenItem extends MenuItem {
+     public KlantAanpassenItem(String name) {
+          super(name);
+     }
+     @Override
+     public void execute() {
+         new KlantBeheer().editKlant();
+     }
+}
+
+class PrintKlantenItem extends MenuItem {
+     public PrintKlantenItem(String name) {
+          super(name);
+     }
+     @Override
+     public void execute() {
+          new KlantBeheer().printData();
+          new TerugMenu().createMenu();
+     }
+}
+
+class KlantVerwijderenItem extends MenuItem {
+     public KlantVerwijderenItem(String name) {
+          super(name);
+     }
+     @Override
+     public void execute() {
+          new KlantBeheer().deleteKlant();
+     }
+}
