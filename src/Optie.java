@@ -4,12 +4,14 @@ public class Optie {
     private int price;
     private String bootType;
     private String category;
-    Optie(String name, String description, int price, String bootType , String category) {
+    private boolean selected;
+    Optie(String name, String description, int price, String bootType , String category, boolean selected) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.bootType = bootType;
         this.category = category;
+        this.selected = selected;
     }
     public String getName() {
         return name;
