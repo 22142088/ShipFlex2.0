@@ -61,7 +61,6 @@ public class KlantBeheer {
             Klant[] klantenArray = gson.fromJson(jsonReader, Klant[].class);
             klanten.clear();
             klanten.addAll(Arrays.asList(klantenArray));
-            printer.println("Klanten lijst opgehaald van " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,18 +90,20 @@ public class KlantBeheer {
     public void addKlant() {
         int kortingspercentage = 0;
         String naam = "";
-        while (true) {
-            printer.println("Vul een naam in: ");
-            naam = reader.getStringInput();
-            printer.println("Vul het kortingspercentage in die de klant krijgt: ");
-            kortingspercentage = reader.getNumBetweenTwoNums(0,100);
-            klanten.add(new Klant(naam, kortingspercentage));
-        }
+        printer.println("Vul de klant zijn naam in: ");
+        naam = reader.getStringInput();
+        printer.println("Vul de klant zijn kortingspercentage in: ");
+        kortingspercentage = reader.getNumBetweenTwoNums(0,100);
+        klanten.add(new Klant(naam, kortingspercentage));
+        writeDataToFile();
+        printer.println("De klant is toegevoegd.");
+        new KlantBeheerMenu().createMenu();
     }
 
     public void printData() {
         for (Klant klant : klanten) {
             printer.printf("Naam: %s, Kortingspercentage: %d \n", klant.getNaam(), klant.getKortingspercentage());
         }
+        printer.println("");
     }
 }

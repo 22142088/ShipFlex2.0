@@ -1,7 +1,7 @@
 public class Klant {
     private String naam;
     private int kortingspercentage;
-    Klant(String naam, int kortingPercentage) {
+    Klant(String naam, int kortingspercentage) {
         this.naam = naam;
         this.kortingspercentage = kortingspercentage;
     }

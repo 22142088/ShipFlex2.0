@@ -31,7 +31,7 @@ public class OptieLijst {
         //vrachtschip
         //motor opties
         optieLijst.add(new Optie("standaard motor", "50000 pk motor", 10000, "Vrachtschip", "motor"));
-        optieLijst.add(new Optie("zuinige millieu vriendelijke motor", "45000 pk motor", 12000, "Vrachtschip", "motor"));
+        optieLijst.add(new Optie("millieu vriendelijke motor", "45000 pk motor", 12000, "Vrachtschip", "motor"));
         //verf opties
         optieLijst.add(new Optie("standaard verf", "standaard verf die word aangebracht op de hul van uw boot", 200, "Vrachtschip", "verf"));
         optieLijst.add(new Optie("millieu vriendelijke verf", "millieu vriendelijke verf die geen gifstoffen afgeeft", 300, "Vrachtschip", "verf"));
@@ -87,29 +87,9 @@ public class OptieLijst {
         return optieLijst;
     }
 
-    public static ArrayList<Optie> printCategorie(String bootType, String categorie) {
-        ArrayList<Optie> tempLijst = new ArrayList<>();
-        ConsolePrinter printer = new ConsolePrinter();
-        int index = 1;
-        for (Optie optie : optieLijst) {
-            if (bootType.equalsIgnoreCase(optie.getBootType())) {
-                if (categorie.equalsIgnoreCase(optie.getCategory())) {
-                    tempLijst.add(optie);
-                    printer.printf(" %d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                    index++;
-                }
-            }
-        }
-        return tempLijst;
-    }
-
-    
-
-
     public static void printLijst(String bootType) {
         ArrayList<String> categorieLijst = new ArrayList<>();
         ConsolePrinter printer = new ConsolePrinter();
-        // prints every optie in lijst and their information
         for (Optie optie : optieLijst) {
             if (bootType.equalsIgnoreCase(optie.getBootType())) {
                 if (!categorieLijst.contains(optie.getCategory())) {
@@ -122,7 +102,7 @@ public class OptieLijst {
             for (Optie optie : optieLijst) {
                 if (categorie.equalsIgnoreCase(optie.getCategory())) {
                     if (bootType.equals(optie.getBootType())) {
-                        printer.printf("%-25s| %-70s| €%-6d| %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                        printer.printf("%-30s| %-70s| €%-6d| %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
                     }
                 }
             }
