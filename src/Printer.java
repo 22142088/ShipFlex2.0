@@ -4,8 +4,6 @@ public interface Printer {
     public void println(String tekst);
     public void printf(String tekst, Object ... args) ;
 }
-
-
 class ConsolePrinter implements Printer {
     public void println(String tekst) {
         System.out.println(tekst);

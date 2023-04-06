@@ -12,7 +12,6 @@ class BootOptieLijstItem extends MenuItem {
      public BootOptieLijstItem(String name) {
           super(name);
      }
-
      @Override
      public void execute() {
           OptieLijst.printLijst(OptieLijst.getBootInput());
@@ -23,19 +22,15 @@ class OfferteMakenItem extends MenuItem {
      public OfferteMakenItem(String name) {
           super(name);
      }
-
      @Override
      public void execute() {
-          double motorPrijs = Offerte.motorVragenLijst();
-
-
+          new Offerte().test();
      }
 }
 class KlantenManagnementItem extends MenuItem {
      public KlantenManagnementItem(String name) {
           super(name);
      }
-
      @Override
      public void execute() {
           new KlantBeheerMenu().createMenu();
@@ -67,14 +62,13 @@ class HoofdMenuItem extends MenuItem {
      public OptieOptiesItem(String name) {
           super(name);
      }
-      @Override
+     @Override
      public void execute() {
           new OptieKeuzeMenu().createMenu();
      }
 }
 
 class KlantToevoegenItem extends MenuItem {
-
      public KlantToevoegenItem(String name) {
           super(name);
      }
@@ -85,7 +79,6 @@ class KlantToevoegenItem extends MenuItem {
 }
 
 class KlantAanpassenItem extends MenuItem {
-
      public KlantAanpassenItem(String name) {
           super(name);
      }
@@ -96,12 +89,10 @@ class KlantAanpassenItem extends MenuItem {
 }
 
 class PrintKlantenItem extends MenuItem {
-
      public PrintKlantenItem(String name) {
           super(name);
      }
      @Override
-
      public void execute() {
           new KlantBeheer().printData();
           new TerugMenu().createMenu();
@@ -109,12 +100,11 @@ class PrintKlantenItem extends MenuItem {
 }
 
 class KlantVerwijderenItem extends MenuItem {
-
      public KlantVerwijderenItem(String name) {
           super(name);
      }
      @Override
      public void execute() {
-          //
+          new KlantBeheer().deleteKlant();
      }
 }

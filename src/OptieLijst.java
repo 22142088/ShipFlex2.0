@@ -3,10 +3,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class OptieLijst {
-
     private static ArrayList<Optie> optieLijst = new ArrayList<>();
-
-
     public static void initialiseOptieLijst() {
         //speedboat
         //motor opties
@@ -82,11 +79,9 @@ public class OptieLijst {
         optieLijst.add(new Optie("luxe", "voor de luxe cockpit van het schip daaronder valt...", 300, "Dinghy", "cockpit"));
         optieLijst.add(new Optie("advanced", "voor de advanced afwerking van het schip hieronder valt...", 300, "Dinghy", "cockpit"));
     }
-
     public static ArrayList<Optie> getLijst() {
         return optieLijst;
     }
-
     public static void printLijst(String bootType) {
         ArrayList<String> categorieLijst = new ArrayList<>();
         ConsolePrinter printer = new ConsolePrinter();

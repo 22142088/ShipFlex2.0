@@ -4,9 +4,6 @@ public class Optie {
     private int price;
     private String bootType;
     private String category;
-
-
-
     Optie(String name, String description, int price, String bootType , String category) {
         this.name = name;
         this.description = description;

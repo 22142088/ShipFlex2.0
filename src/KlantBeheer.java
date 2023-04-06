@@ -13,47 +13,13 @@ public class KlantBeheer {
         readDataFromFile();
     }
     private static final Gson gson = new Gson();
-
-//    public void Menu() {
-//        int choice;
-//        do {
-//            printer.println("Kies een optie:");
-//            printer.println("1: Regristreer een nieuwe klant");
-//            printer.println("2: Weergeef alle klanten");
-//            printer.println("3: Klant aanpassen");
-//            printer.println("0: Terug");
-//
-//            choice = reader.getNumBetweenTwoNums(0,3);
-//
-//            switch (choice) {
-//                case 1:
-//                    addKlant();
-//                    writeDataToFile();
-//                    break;
-//                case 2:
-//                    printData();
-//                    break;
-//                case 3:
-//                    editKlant();
-//                    break;
-//                case 0:
-//                    new HoofdMenu().createMenu();
-//                default:
-//                    printer.println("Onjuiste keuze");
-//                    break;
-//            }
-//        } while (choice != 0);
-//    }
-
     public void writeDataToFile() {
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(klanten, writer);
-            printer.println("Lijst geupdate: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public void readDataFromFile() {
         try (FileReader reader = new FileReader(filePath)) {
             JsonReader jsonReader = new JsonReader(reader);
@@ -65,26 +31,48 @@ public class KlantBeheer {
             e.printStackTrace();
         }
     }
-
-    public void editKlant() {
+    public void deleteKlant() {
         printer.println("Vul de naam in van de klant: ");
         String naam = reader.getStringInput();
-        boolean found = false;
+        boolean persoonBestaat = false;
         for (Klant klant : klanten) {
             if (klant.getNaam().equals(naam)) {
-                printer.println("Update de kortingspercentage voor de klant: ");
-                int kortingspercentage = reader.getNumBetweenTwoNums(0,100);
-                klant.setkortingspercentage(kortingspercentage);
-                found = true;
+                klanten.remove(klant);
+                persoonBestaat = true;
                 break;
             }
         }
-        if (found) {
+        if (!persoonBestaat) {
+            printer.println("Persoon niet gevonden :(");
+        } else {
+            writeDataToFile();
+            printer.println("Klant verwijderd!");
+        }
+        new KlantBeheerMenu().createMenu();
+    }
+    public void editKlant() {
+        printer.println("Vul de naam in van de klant: ");
+        String naam = reader.getStringInput();
+        boolean persoonBestaat = false;
+        for (Klant klant : klanten) {
+            if (klant.getNaam().equals(naam)) {
+                printer.println("Niewue naam voor de klant: ");
+                String newNaam = reader.getStringInput();
+                klant.setNaam(newNaam);
+                printer.println("Nieuwe kortingspercentage voor de klant: ");
+                int kortingspercentage = reader.getNumBetweenTwoNums(0,100);
+                klant.setkortingspercentage(kortingspercentage);
+                persoonBestaat = true;
+                break;
+            }
+        }
+        if (!persoonBestaat) {
+            printer.println("Persoon niet gevonden :(");
+        } else {
             writeDataToFile();
             printer.println("Klant gewijzigd!");
-        } else {
-            printer.println("Persoon niet gevonden :(");
         }
+        new KlantBeheerMenu().createMenu();
     }
 
     public void addKlant() {
@@ -99,7 +87,6 @@ public class KlantBeheer {
         printer.println("De klant is toegevoegd.");
         new KlantBeheerMenu().createMenu();
     }
-
     public void printData() {
         for (Klant klant : klanten) {
             printer.printf("Naam: %s, Kortingspercentage: %d \n", klant.getNaam(), klant.getKortingspercentage());

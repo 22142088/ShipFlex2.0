@@ -1,11 +1,8 @@
-import java.util.Scanner;
 public class Offerte {
-
-    static Scanner scanner = new Scanner(System.in);
-    public static double motorVragenLijst() {
+    public double test() {
         ConsolePrinter printer = new ConsolePrinter();
-        printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
-
-        return 0.00;
+        double prijs = OptieLijst.prijsIndicatie(OptieLijst.getBootInput());
+        printer.println("€" + prijs);
+        return prijs;
     }
 }

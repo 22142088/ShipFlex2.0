@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Menu {
     protected ArrayList<MenuItem> menu = new ArrayList<>();
     protected Reader reader = new Reader();
-
     protected void printMenu() {
         int index = 1;
         ConsolePrinter printer = new ConsolePrinter();

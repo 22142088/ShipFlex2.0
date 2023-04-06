@@ -5,25 +5,27 @@ public class Reader {
     Reader() {
         this.sc = new Scanner(System.in);
     }
-    public int getNumBetweenTwoNums(int start, int end) {
+    public int getNumBetweenTwoNums(int min, int max) {
+        Scanner sc = new Scanner(System.in);
+        int input = 0;
         boolean validInput = false;
-        int input = -1;
-        ConsolePrinter printer = new ConsolePrinter();
         while (!validInput) {
-            input = sc.nextInt();
-            if (input >= start && input <= end) {
-                validInput = true;
-            }
-            else if (input == 69 || input == 420) {
-                printer.println("Nice.");
-            }
-            else {
-                printer.println("Vekeerde input, probeer het opnieuw!");
+            if (sc.hasNextInt()) {
+                input = sc.nextInt();
+                if (input >= min && input <= max) {
+                    validInput = true;
+                }
+                else {
+                    sc.nextLine();
+                    System.out.println("Vekeerde input, probeer het opnieuw!");
+                }
+            } else {
+                sc.nextLine();
+                System.out.println("Vekeerde input, voer een nummer in!");
             }
         }
         return input;
     }
-
     public String getStringInput() {
         boolean validInput = false;
         String input = "";
