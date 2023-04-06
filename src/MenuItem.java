@@ -24,7 +24,9 @@ class OfferteMakenItem extends MenuItem {
      }
      @Override
      public void execute() {
-          new Offerte().test();
+          ConsolePrinter consolePrinter = new ConsolePrinter();
+          Offerte offerte = new Offerte();
+          consolePrinter.printf("%d", offerte.test());
      }
 }
 class KlantenManagnementItem extends MenuItem {
