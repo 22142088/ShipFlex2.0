@@ -152,4 +152,23 @@ public class OptieLijst {
         }
         return bootTypeLijst.get(reader.getNumBetweenTwoNums(1, index)-1);
     }
+
+    public static void generateQuotation(){
+        String gekozenBoottype = getBootInput();
+
+        for (Optie optie : optieLijst){
+            if (optie.getBootType().equals(gekozenBoottype)) {
+                optie.setSelected(true);
+            }
+
+            ArrayList<Optie> gekozenOpties = new ArrayList<>();
+            double totalePrijs = 0.0;
+            for (Optie opties : optieLijst){
+                if (optie.getSelected() == true){
+                    gekozenOpties.add(opties);
+                    totalePrijs += optie.getPrice();
+                }
+            }
+        }
+    }
 }

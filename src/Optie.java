@@ -26,5 +26,11 @@ public class Optie {
         return category;
     }
     public String getBootType() { return bootType; }
+    public boolean getSelected(){return selected;}
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 }
+
 
