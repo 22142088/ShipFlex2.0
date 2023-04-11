@@ -135,40 +135,41 @@ public class OptieLijst {
         }
         return prijs;
     }
-    public static String getBootInput() {
-        int index = 0;
-        Reader reader = new Reader();
+
+
+    public static Offerte printOfferte(String bootType, String klantnaam) {
+        int index = 1;
+        ArrayList<Optie> tempLijst = new ArrayList<>();
+        ArrayList<String> categorieLijst = new ArrayList<>();
         ConsolePrinter printer = new ConsolePrinter();
-        ArrayList<String> bootTypeLijst = new ArrayList<>();
+        Reader reader = new Reader();
         for (Optie optie : optieLijst) {
-            if (!bootTypeLijst.contains(optie.getBootType())) {
-                bootTypeLijst.add(optie.getBootType());
-
-            }
-        }
-        for (String bootType : bootTypeLijst) {
-            index++;
-            printer.printf("%-3d: %s\n", index, bootType);
-        }
-        return bootTypeLijst.get(reader.getNumBetweenTwoNums(1, index)-1);
-    }
-
-    public static void generateQuotation(){
-        String gekozenBoottype = getBootInput();
-
-        for (Optie optie : optieLijst){
-            if (optie.getBootType().equals(gekozenBoottype)) {
-                optie.setSelected(true);
-            }
-
-            ArrayList<Optie> gekozenOpties = new ArrayList<>();
-            double totalePrijs = 0.0;
-            for (Optie opties : optieLijst){
-                if (optie.getSelected() == true){
-                    gekozenOpties.add(opties);
-                    totalePrijs += optie.getPrice();
+            if (bootType.equalsIgnoreCase(optie.getBootType())) {
+                tempLijst.add(optie);
+                if (!categorieLijst.contains(optie.getCategory())) {
+                    categorieLijst.add(optie.getCategory());
                 }
             }
         }
+        List<Optie> gekozenOpties = new ArrayList<>();
+        for (String categorie : categorieLijst) {
+            int index2 = index;
+            printer.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
+            for (Optie optie : optieLijst) {
+                if (categorie.equalsIgnoreCase(optie.getCategory())) {
+                    if (bootType.equalsIgnoreCase(optie.getBootType())) {
+                        printer.printf("%-3d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                        index++;
+                        int keuze = reader.getNumBetweenTwoNums(index2, index-1);
+                        if (keuze != -1) {
+                            gekozenOpties.add(tempLijst.get(keuze-1));
+                        }
+                    }
+                }
+            }
+        }
+        Offerte offerte = new Offerte(klantnaam, bootType, gekozenOpties);
+        printer.println(offerte.toString());
+        return offerte;
     }
 }

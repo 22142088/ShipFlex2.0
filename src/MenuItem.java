@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 abstract class MenuItem {
      String name;
      public MenuItem(String name) {
@@ -25,8 +27,8 @@ class OfferteMakenItem extends MenuItem {
      @Override
      public void execute() {
           ConsolePrinter consolePrinter = new ConsolePrinter();
-          Offerte offerte = new Offerte("Simon", "SimonDeSnelleBoot", , 100);
-          consolePrinter.printf("%d", offerte.test());
+//          Offerte offerte = new Offerte();
+//          consolePrinter.printf("%d", offerte.test());
      }
 }
 class KlantenManagnementItem extends MenuItem {
