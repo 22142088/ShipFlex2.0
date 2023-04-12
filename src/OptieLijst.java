@@ -135,41 +135,4 @@ public class OptieLijst {
         }
         return prijs;
     }
-
-
-    public static Offerte printOfferte(String bootType, String klantnaam) {
-        int index = 1;
-        ArrayList<Optie> tempLijst = new ArrayList<>();
-        ArrayList<String> categorieLijst = new ArrayList<>();
-        ConsolePrinter printer = new ConsolePrinter();
-        Reader reader = new Reader();
-        for (Optie optie : optieLijst) {
-            if (bootType.equalsIgnoreCase(optie.getBootType())) {
-                tempLijst.add(optie);
-                if (!categorieLijst.contains(optie.getCategory())) {
-                    categorieLijst.add(optie.getCategory());
-                }
-            }
-        }
-        List<Optie> gekozenOpties = new ArrayList<>();
-        for (String categorie : categorieLijst) {
-            int index2 = index;
-            printer.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
-            for (Optie optie : optieLijst) {
-                if (categorie.equalsIgnoreCase(optie.getCategory())) {
-                    if (bootType.equalsIgnoreCase(optie.getBootType())) {
-                        printer.printf("%-3d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
-                        index++;
-                        int keuze = reader.getNumBetweenTwoNums(index2, index-1);
-                        if (keuze != -1) {
-                            gekozenOpties.add(tempLijst.get(keuze-1));
-                        }
-                    }
-                }
-            }
-        }
-        Offerte offerte = new Offerte(klantnaam, bootType, gekozenOpties);
-        printer.println(offerte.toString());
-        return offerte;
-    }
 }
