@@ -14,7 +14,7 @@ public class KlantBeheer {
         this.io = io;
         readDataFromFile();
     }
-    private static final Gson gson = new Gson();
+    private static Gson gson = new Gson();
     public void writeDataToFile() {
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(klanten, writer);
