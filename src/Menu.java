@@ -5,10 +5,9 @@ public class Menu {
     protected Reader reader = new Reader();
     protected void printMenu() {
         int index = 1;
-        ConsolePrinter printer = new ConsolePrinter();
-        printer.println("Kies uw optie:");
+        Main.printer.println("Kies uw optie:");
         for (MenuItem item : menu) {
-            printer.println(index + ": " + item.getName());
+            Main.printer.println(index + ": " + item.getName());
             index++;
         }
         menu.get((reader.getNumBetweenTwoNums(1, menu.size()))-1).execute();

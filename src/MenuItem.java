@@ -26,9 +26,8 @@ class OfferteMakenItem extends MenuItem {
      }
      @Override
      public void execute() {
-          ConsolePrinter consolePrinter = new ConsolePrinter();
 //          Offerte offerte = new Offerte();
-//          consolePrinter.printf("%d", offerte.test());
+//          Main.printer.printf("%d", offerte.test());
      }
 }
 class KlantenManagnementItem extends MenuItem {
@@ -57,8 +56,7 @@ class HoofdMenuItem extends MenuItem {
       }
       @Override
       public void execute() {
-           ConsolePrinter printer = new ConsolePrinter();
-           printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
+           Main.printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
            new TerugMenu().createMenu();
       }
  }
