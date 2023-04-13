@@ -2,12 +2,9 @@
     import java.util.Scanner;
 
     public class Reader {
-        private Scanner sc;
+        private IO sc;
         Reader() {
-            this.sc = new Scanner(System.in);
-        }
-        Reader(InputStream inputStream) {
-            this.sc = new Scanner(inputStream);
+            this.sc = new ConsoleIO();
         }
         public int getNumBetweenTwoNums(int min, int max) {
             Scanner sc = new Scanner(System.in);

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 public class Menu {
     protected ArrayList<MenuItem> menu = new ArrayList<>();
     protected Reader reader = new Reader();
