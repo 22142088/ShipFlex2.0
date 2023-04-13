@@ -17,6 +17,7 @@ class HoofdMenu extends Menu {
         menu.add(new OfferteMakenItem("Offerte Maken"));
         menu.add(new KlantenManagnementItem("Klanten Management"));
         menu.add(new OptieOptiesItem("Opties Inzien"));
+        menu.add(new ExitItem("Exit"));
         printMenu(io);
     }
 }

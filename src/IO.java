@@ -8,6 +8,9 @@ interface IO {
     public int nextInt();
 }
 class ConsoleIO implements IO {
+    ConsoleIO() {
+
+    }
     public void println(String tekst) {
         System.out.println(tekst);
     }

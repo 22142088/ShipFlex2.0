@@ -110,3 +110,9 @@ class KlantVerwijderenItem extends MenuItem {
           new KlantBeheer(io).deleteKlant();
      }
 }
+
+class ExitItem extends MenuItem {
+     public ExitItem(String name) {
+          super(name);
+     }
+}

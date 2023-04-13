@@ -1,11 +1,16 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TestIO implements IO {
+
     private ArrayList<String> outputs = new ArrayList<>();
     private ArrayList<Integer> nextIntInputs = new ArrayList<>();
     private ArrayList<String> nextStringInputs = new ArrayList<>();
     int intInputIndex = 0;
     int stringInputIndex = 0;
+    TestIO() {
+
+    }
 
     @Override
     public void println(String tekst) {
@@ -17,10 +22,11 @@ public class TestIO implements IO {
         String txt = String.format(tekst, args);
         outputs.add(txt);
     }
-
+    Scanner sc = new Scanner(System.in);
     @Override
     public boolean hasNextInt() {
-        return true;
+        return nextIntInputs.size() > intInputIndex;
+
     }
 
     @Override
