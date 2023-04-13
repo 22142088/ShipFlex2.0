@@ -54,5 +54,32 @@ public class ApplicationTest {
         }
         assertEquals(verwachtePrijs,testString);
     }
+
+    @Test
+    public void testKlantAddAndRemove() {
+        // arrange
+        OptieLijst.initialiseOptieLijst();
+        TestIO io = new TestIO();
+        String expected = "Klant verwijderd!";
+        String result = "";
+        // act
+        io.addNextIntInputs(2); // klanten management
+        io.addNextIntInputs(2); // nieuwe klant toevoegen
+        io.addNextStringInputs("TestKlant"); // klant naam
+        io.addNextIntInputs(69); // kortingspercentage
+        io.addNextIntInputs(4); // verwijder klant
+        io.addNextStringInputs("TestKlant"); // klant naam
+        io.addNextIntInputs(5); // terug
+        io.addNextIntInputs(4); // exit
+        new HoofdMenu().createMenu(io);
+        // assert
+        for (String string : io.getOutputs()) {
+            if (string.contains("Klant verwijderd!")) {
+                result = string;
+                break;
+            }
+        }
+        assertEquals(expected, result);
+    }
 }
 
