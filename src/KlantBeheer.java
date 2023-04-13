@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 public class KlantBeheer {
-    String filePath = "klanten.json";
-    Reader reader;
-    IO io;
-    ArrayList<Klant> klanten = new ArrayList<>();
+    private String filePath = "klanten.json";
+    private Reader reader;
+    private IO io;
+    private ArrayList<Klant> klanten = new ArrayList<>();
     KlantBeheer(IO io) {
         reader = new Reader(io);
         this.io = io;
