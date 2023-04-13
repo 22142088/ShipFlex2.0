@@ -26,8 +26,7 @@ class OfferteMakenItem extends MenuItem {
      }
      @Override
      public void execute(IO io) {
-//          Offerte offerte = new Offerte();
-//          Main.printer.printf("%d", offerte.test());
+
      }
 }
 class KlantenManagnementItem extends MenuItem {
@@ -56,7 +55,7 @@ class HoofdMenuItem extends MenuItem {
       }
       @Override
       public void execute(IO io) {
-           io.println("€" + OptieLijst.prijsIndicatie(io, OptieLijst.getBootInput(io)));
+           io.println("De totaal prijs is: €" + OptieLijst.prijsIndicatie(io, OptieLijst.getBootInput(io)));
            new TerugMenu().createMenu(io);
       }
  }
