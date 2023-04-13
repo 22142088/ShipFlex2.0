@@ -66,10 +66,5 @@ public class Offerte {
         return sb.toString();
 
     }
-        public double test () {
-            double prijs = OptieLijst.prijsIndicatie(OptieLijst.getBootInput());
-            return prijs;
-        }
-    }
-
+}
 

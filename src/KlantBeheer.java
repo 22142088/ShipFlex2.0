@@ -6,9 +6,12 @@ import com.google.gson.stream.JsonReader;
 
 public class KlantBeheer {
     String filePath = "klanten.json";
-    Reader reader = new Reader();
+    Reader reader;
+    IO io;
     ArrayList<Klant> klanten = new ArrayList<>();
-    KlantBeheer() {
+    KlantBeheer(IO io) {
+        reader = new Reader(io);
+        this.io = io;
         readDataFromFile();
     }
     private static final Gson gson = new Gson();
@@ -31,7 +34,7 @@ public class KlantBeheer {
         }
     }
     public void deleteKlant() {
-        Main.printer.println("Vul de naam in van de klant: ");
+        io.println("Vul de naam in van de klant: ");
         String naam = reader.getStringInput();
         boolean persoonBestaat = false;
         for (Klant klant : klanten) {
@@ -42,23 +45,23 @@ public class KlantBeheer {
             }
         }
         if (!persoonBestaat) {
-            Main.printer.println("Persoon niet gevonden :(");
+            io.println("Persoon niet gevonden :(");
         } else {
             writeDataToFile();
-            Main.printer.println("Klant verwijderd!");
+            io.println("Klant verwijderd!");
         }
-        new KlantBeheerMenu().createMenu();
+        new KlantBeheerMenu().createMenu(io);
     }
     public void editKlant() {
-        Main.printer.println("Vul de naam in van de klant: ");
+        io.println("Vul de naam in van de klant: ");
         String naam = reader.getStringInput();
         boolean persoonBestaat = false;
         for (Klant klant : klanten) {
             if (klant.getNaam().equals(naam)) {
-                Main.printer.println("Niewue naam voor de klant: ");
+                io.println("Niewue naam voor de klant: ");
                 String newNaam = reader.getStringInput();
                 klant.setNaam(newNaam);
-                Main.printer.println("Nieuwe kortingspercentage voor de klant: ");
+                io.println("Nieuwe kortingspercentage voor de klant: ");
                 int kortingspercentage = reader.getNumBetweenTwoNums(0,100);
                 klant.setkortingspercentage(kortingspercentage);
                 persoonBestaat = true;
@@ -66,30 +69,30 @@ public class KlantBeheer {
             }
         }
         if (!persoonBestaat) {
-            Main.printer.println("Persoon niet gevonden :(");
+            io.println("Persoon niet gevonden :(");
         } else {
             writeDataToFile();
-            Main.printer.println("Klant gewijzigd!");
+            io.println("Klant gewijzigd!");
         }
-        new KlantBeheerMenu().createMenu();
+        new KlantBeheerMenu().createMenu(io);
     }
 
     public void addKlant() {
         int kortingspercentage = 0;
         String naam = "";
-        Main.printer.println("Vul de klant zijn naam in: ");
+        io.println("Vul de klant zijn naam in: ");
         naam = reader.getStringInput();
-        Main.printer.println("Vul de klant zijn kortingspercentage in: ");
+        io.println("Vul de klant zijn kortingspercentage in: ");
         kortingspercentage = reader.getNumBetweenTwoNums(0,100);
         klanten.add(new Klant(naam, kortingspercentage));
         writeDataToFile();
-        Main.printer.println("De klant is toegevoegd.");
-        new KlantBeheerMenu().createMenu();
+        io.println("De klant is toegevoegd.");
+        new KlantBeheerMenu().createMenu(io);
     }
     public void printData() {
         for (Klant klant : klanten) {
-            Main.printer.printf("Naam: %s, Kortingspercentage: %d \n", klant.getNaam(), klant.getKortingspercentage());
+            io.printf("Naam: %s, Kortingspercentage: %d \n", klant.getNaam(), klant.getKortingspercentage());
         }
-        Main.printer.println("");
+        io.println("");
     }
 }

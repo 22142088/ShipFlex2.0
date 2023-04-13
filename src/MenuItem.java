@@ -8,16 +8,16 @@ abstract class MenuItem {
      public String getName() {
           return name;
      }
-     public void execute(){};
+     public void execute(IO io) {};
 }
 class BootOptieLijstItem extends MenuItem {
      public BootOptieLijstItem(String name) {
           super(name);
      }
      @Override
-     public void execute() {
-          OptieLijst.printLijst(OptieLijst.getBootInput());
-          new TerugMenu().createMenu();
+     public void execute(IO io) {
+          OptieLijst.printLijst(io, OptieLijst.getBootInput(io));
+          new TerugMenu().createMenu(io);
      }
 }
 class OfferteMakenItem extends MenuItem {
@@ -25,7 +25,7 @@ class OfferteMakenItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
+     public void execute(IO io) {
 //          Offerte offerte = new Offerte();
 //          Main.printer.printf("%d", offerte.test());
      }
@@ -35,8 +35,8 @@ class KlantenManagnementItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new KlantBeheerMenu().createMenu();
+     public void execute(IO io) {
+          new KlantBeheerMenu().createMenu(io);
      }
 }
 
@@ -45,8 +45,8 @@ class HoofdMenuItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new HoofdMenu().createMenu();
+     public void execute(IO io) {
+          new HoofdMenu().createMenu(io);
      }
 }
 
@@ -55,9 +55,9 @@ class HoofdMenuItem extends MenuItem {
            super(name);
       }
       @Override
-      public void execute() {
-           Main.printer.println("€" + OptieLijst.prijsIndicatie(OptieLijst.getBootInput()));
-           new TerugMenu().createMenu();
+      public void execute(IO io) {
+           io.println("€" + OptieLijst.prijsIndicatie(io, OptieLijst.getBootInput(io)));
+           new TerugMenu().createMenu(io);
       }
  }
  class OptieOptiesItem extends MenuItem {
@@ -65,8 +65,8 @@ class HoofdMenuItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new OptieKeuzeMenu().createMenu();
+     public void execute(IO io) {
+          new OptieKeuzeMenu().createMenu(io);
      }
 }
 
@@ -75,8 +75,8 @@ class KlantToevoegenItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new KlantBeheer().addKlant();
+     public void execute(IO io) {
+          new KlantBeheer(io).addKlant();
      }
 }
 
@@ -85,8 +85,8 @@ class KlantAanpassenItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-         new KlantBeheer().editKlant();
+     public void execute(IO io) {
+         new KlantBeheer(io).editKlant();
      }
 }
 
@@ -95,9 +95,9 @@ class PrintKlantenItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new KlantBeheer().printData();
-          new TerugMenu().createMenu();
+     public void execute(IO io) {
+          new KlantBeheer(io).printData();
+          new TerugMenu().createMenu(io);
      }
 }
 
@@ -106,7 +106,7 @@ class KlantVerwijderenItem extends MenuItem {
           super(name);
      }
      @Override
-     public void execute() {
-          new KlantBeheer().deleteKlant();
+     public void execute(IO io) {
+          new KlantBeheer(io).deleteKlant();
      }
 }

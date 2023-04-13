@@ -2,27 +2,26 @@
     import java.util.Scanner;
 
     public class Reader {
-        private IO sc;
-        Reader() {
-            this.sc = new ConsoleIO();
+        private IO io;
+        Reader(IO io) {
+            this.io = io;
         }
         public int getNumBetweenTwoNums(int min, int max) {
-            Scanner sc = new Scanner(System.in);
             int input = 0;
             boolean validInput = false;
             while (!validInput) {
-                if (sc.hasNextInt()) {
-                    input = sc.nextInt();
+                if (io.hasNextInt()) {
+                    input = io.nextInt();
                     if (input >= min && input <= max) {
                         validInput = true;
                     }
                     else {
-                        sc.nextLine();
-                        Main.printer.println("Vekeerde input, probeer het opnieuw!");
+                        io.nextLine();
+                        io.println("Vekeerde input, probeer het opnieuw!");
                     }
                 } else {
-                    sc.nextLine();
-                    Main.printer.println("Vekeerde input, voer een nummer in!");
+                    io.nextLine();
+                    io.println("Vekeerde input, voer een nummer in!");
                 }
             }
             return input;
@@ -30,13 +29,15 @@
         public String getStringInput() {
             boolean validInput = false;
             String input = "";
+            int i = 0;
             while (!validInput) {
-                input = sc.nextLine();
+                input = io.nextLine();
                 if (!input.trim().isEmpty()) {
                     validInput = true;
-                } else {
-                    Main.printer.println("Vekeerde input, probeer het opnieuw!");
+                } else if (i >= 1) {
+                    io.println("Vekeerde input, probeer het opnieuw!");
                 }
+                i++;
             }
             return input;
         }

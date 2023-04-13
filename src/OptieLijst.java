@@ -81,7 +81,7 @@ public class OptieLijst {
     public static ArrayList<Optie> getLijst() {
         return optieLijst;
     }
-    public static void printLijst(String bootType) {
+    public static void printLijst(IO io, String bootType) {
         ArrayList<String> categorieLijst = new ArrayList<>();
         for (Optie optie : optieLijst) {
             if (bootType.equalsIgnoreCase(optie.getBootType())) {
@@ -91,23 +91,23 @@ public class OptieLijst {
             }
         }
         for (String categorie : categorieLijst) {
-            Main.printer.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
+            io.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
             for (Optie optie : optieLijst) {
                 if (categorie.equalsIgnoreCase(optie.getCategory())) {
                     if (bootType.equals(optie.getBootType())) {
-                        Main.printer.printf("%-30s| %-70s| €%-6d| %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                        io.printf("%-30s| %-70s| €%-6d| %s\n", optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
                     }
                 }
             }
         }
     }
 
-    public static int prijsIndicatie(String bootType) {
+    public static int prijsIndicatie(IO io, String bootType) {
         int prijs = 0;
         int index = 1;
         ArrayList<Optie> tempLijst = new ArrayList<>();
         ArrayList<String> categorieLijst = new ArrayList<>();
-        Reader reader = new Reader();
+        Reader reader = new Reader(io);
         for (Optie optie : optieLijst) {
             if (bootType.equalsIgnoreCase(optie.getBootType())) {
                 tempLijst.add(optie);
@@ -118,11 +118,11 @@ public class OptieLijst {
         }
         for (String categorie : categorieLijst) {
             int index2 = index;
-            Main.printer.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
+            io.println("\n" + categorie.substring(0, 1).toUpperCase() + categorie.substring(1));
             for (Optie optie : optieLijst) {
                 if (categorie.equalsIgnoreCase(optie.getCategory())) {
                     if (bootType.equalsIgnoreCase(optie.getBootType())) {
-                        Main.printer.printf("%-3d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
+                        io.printf("%-3d: %-25s| %-70s| €%-6d| %s\n", index, optie.getName(), optie.getDescription(), optie.getPrice(), optie.getCategory());
                         index++;
                     }
                 }
@@ -132,9 +132,9 @@ public class OptieLijst {
         }
         return prijs;
     }
-    public static String getBootInput() {
+    public static String getBootInput(IO io) {
         int index = 0;
-        Reader reader = new Reader();
+        Reader reader = new Reader(io);
         ArrayList<String> bootTypeLijst = new ArrayList<>();
         for (Optie optie : optieLijst) {
             if (!bootTypeLijst.contains(optie.getBootType())) {
@@ -143,7 +143,7 @@ public class OptieLijst {
         }
         for (String bootType : bootTypeLijst) {
             index++;
-            Main.printer.printf("%-3d: %s\n", index, bootType);
+            io.printf("%-3d: %s\n", index, bootType);
         }
         return bootTypeLijst.get(reader.getNumBetweenTwoNums(1, index)-1);
     }
